@@ -1,0 +1,10 @@
+flowchart TD
+  S1["<b>Step 1. Simulation, Blocks A and B</b> (288 cells, B = 1,000)<br/>run_grid3_restartable.R, using pe_discriminant_analysis_profile_optimized_5.R<br/>writes grid_final/"]
+  S2["<b>Step 2. Simulation, Block C</b> (144 cells, B = 1,000)<br/>run_gridC.R, using pe_discriminant_analysis_profile_optimized_6.R<br/>writes grid_final_C/"]
+  S3["<b>Step 3. Robust comparators, Blocks A and C</b> (72 + 144 cells)<br/>run_robust.R, using robust_comparators.R<br/>reads grid_final/ and grid_final_C/, writes robust_results/"]
+  S4["<b>Step 4. Robust comparators, Block B</b> (72 cells)<br/>run_robust_B.R<br/>reads grid_final/, writes robust_results_B/"]
+  S5["<b>Step 5. Real data, three variable sets</b> (500 splits)<br/>real_data_wdbc.R<br/>writes real_data_wdbc/"]
+  S6["<b>Step 6. Real data, all 28 pairs and 56 five-variable subsets</b> (100 splits)<br/>real_data_wdbc_subsets.R<br/>writes real_data_wdbc_subsets/"]
+  S7["<b>Step 7. Numbers and tables for the paper</b><br/>analyze_todos.R, analyze_robust.R, analyze_robust_B.R,<br/>analyze_fallback_cor.R, make_calibration_tables.R"]
+  S8["<b>Step 8. Figures</b><br/>make_figures_distributions.R, make_figures_AB.R, make_figures_C.R,<br/>make_figures_robust.R, redraw_fig15.R"]
+  S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
