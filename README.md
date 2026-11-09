@@ -16,14 +16,22 @@ Run all scripts from the repository root, in this order. All scripts use relativ
 
 | Step | Command | Reads | Writes |
 |---|---|---|---|
-| 1 | `source("run_grid3_restartable.R")` | `pe_discriminant_analysis_profile_optimized_5.R` | `grid_final/` (cells, `calibration.csv`, `design_with_seeds.csv`, `cell_summary.csv`, `run_log.csv`) |
-| 2 | `source("run_gridC.R")` | `pe_discriminant_analysis_profile_optimized_6.R` | `grid_final_C/` (same structure) |
+| 1 | `source("run_grid3_restartable.R")` | `pe_discriminant_analysis_profile_optimized_5.R` | `grid_final/`: `calibrations/`, `calibration.rds`, `calibration.csv`, `design_with_seeds.csv`, `cells/`, `run_log.csv`, `cell_summary.csv` |
+| 2 | `source("run_gridC.R")` | `pe_discriminant_analysis_profile_optimized_6.R` | `grid_final_C/`: the same files |
 | 3 | `source("run_robust.R")` | `grid_final/`, `grid_final_C/`, `robust_comparators.R` | `robust_results/` |
 | 4 | `source("run_robust_B.R")` | `grid_final/`, `robust_comparators.R` | `robust_results_B/` |
-| 5 | `source("real_data_wdbc.R")` | `dslabs::brca` | `real_data_wdbc/` |
-| 6 | `source("real_data_wdbc_subsets.R")` | `dslabs::brca` | `real_data_wdbc_subsets/` |
-| 7 | `source("analyze_todos.R")`, `source("analyze_robust.R")`, `source("analyze_robust_B.R")`, `source("analyze_fallback_cor.R")`, `source("make_calibration_tables.R")` | the folders above | numbers printed to the console, `calibration_tables.tex` |
-| 8 | `source("make_figures_distributions.R")`, `source("make_figures_AB.R")`, `source("make_figures_C.R")`, `source("make_figures_robust.R")`, `source("redraw_fig14.R")`, `source("redraw_fig15.R")` | the folders above | `figures/` (PDF and PNG) |
+| 5 | `source("real_data_wdbc.R")` | `dslabs::brca`, `pe_discriminant_analysis_profile_optimized_6.R`, `robust_comparators.R` | `real_data_wdbc/` |
+| 6 | `source("real_data_wdbc_subsets.R")` | `dslabs::brca`, `pe_discriminant_analysis_profile_optimized_6.R`, `robust_comparators.R` | `real_data_wdbc_subsets/` |
+| 7a | `source("analyze_todos.R")` | `grid_final/cell_summary.csv`, `grid_final/cells/` | numbers printed to the console |
+| 7b | `source("analyze_fallback_cor.R")` | `grid_final/cells/` | numbers printed to the console, `fallback_cor_cells.rds` |
+| 7c | `source("analyze_robust.R")` | `robust_results/robust_summary.csv` | numbers printed to the console, `robust_results/robust_tables.rds` |
+| 7d | `source("analyze_robust_B.R")` | `robust_results_B/robust_summary.csv` | numbers printed to the console, `robust_results_B/robust_tables_B.rds` |
+| 7e | `source("make_calibration_tables.R")` | `grid_final/calibration.csv`, `grid_final_C/calibration.csv` | `calibration_tables.tex` |
+| 8a | `source("make_figures_distributions.R")` | `pe_discriminant_analysis_profile_optimized_6.R`, `grid_final/calibration.csv` | `figures/` (PDF and PNG) |
+| 8b | `source("make_figures_AB.R")` | `grid_final/cell_summary.csv` | `figures/` |
+| 8c | `source("make_figures_C.R")` | `grid_final_C/cell_summary.csv` | `figures/` |
+| 8d | `source("make_figures_robust.R")` | `robust_results/robust_summary.csv` | `figures/` |
+| 8e | `source("redraw_fig15.R")` | `real_data_wdbc_subsets/set_level_results.csv` | `figures/` |
 
 Steps 1 to 4 are restartable: a finished cell is skipped when a script is run again, and an incomplete file is rerun. Steps 1 and 2 are the long runs (Blocks A and B: 342 minutes on 15 workers; Block C: about 2.5 hours on 15 workers). Step 4 took 16 minutes and the variable-subset analysis in step 6 about 17.5 minutes.
 
@@ -50,7 +58,7 @@ options(pe.dry_run = TRUE); source("run_gridC.R"); options(pe.dry_run = NULL)
 | `analyze_robust.R`, `analyze_robust_B.R` | Tables of the robust-comparator study |
 | `analyze_fallback_cor.R` | Within-cell and cell-level correlations between shape-estimation error and the paired difference, with and without fallback replicates |
 | `make_calibration_tables.R` | Appendix tables of the calibrated location differences and realised Bayes errors |
-| `make_figures_*.R`, `redraw_fig14.R`, `redraw_fig15.R` | Figures of the paper |
+| `make_figures_*.R`, `redraw_fig15.R` | Figures of the paper (`redraw_fig15.R` redraws the variable-subset figure from the saved results of `real_data_wdbc_subsets.R`) |
 
 ## Checks built into the scripts
 
