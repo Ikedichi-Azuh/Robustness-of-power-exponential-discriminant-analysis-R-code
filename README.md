@@ -22,11 +22,12 @@ Run all scripts from the repository root, in this order. All scripts use relativ
 | 4 | `source("run_robust_B.R")` | `grid_final/`, `robust_comparators.R` | `robust_results_B/` |
 | 5 | `source("real_data_wdbc.R")` | `dslabs::brca`, `pe_discriminant_analysis_profile_optimized_6.R`, `robust_comparators.R` | `real_data_wdbc/` |
 | 6 | `source("real_data_wdbc_subsets.R")` | `dslabs::brca`, `pe_discriminant_analysis_profile_optimized_6.R`, `robust_comparators.R` | `real_data_wdbc_subsets/` |
-| 7a | `source("analyze_todos.R")` | `grid_final/cell_summary.csv`, `grid_final/cells/` | numbers printed to the console |
+| 7a | `source("analyze_blocks_AB.R")` | `grid_final/cell_summary.csv`, `grid_final/cells/` | numbers printed to the console |
 | 7b | `source("analyze_fallback_cor.R")` | `grid_final/cells/` | numbers printed to the console, `fallback_cor_cells.rds` |
 | 7c | `source("analyze_robust.R")` | `robust_results/robust_summary.csv` | numbers printed to the console, `robust_results/robust_tables.rds` |
 | 7d | `source("analyze_robust_B.R")` | `robust_results_B/robust_summary.csv` | numbers printed to the console, `robust_results_B/robust_tables_B.rds` |
 | 7e | `source("make_calibration_tables.R")` | `grid_final/calibration.csv`, `grid_final_C/calibration.csv` | `calibration_tables.tex` |
+| 7f | `source("make_results_tables.R")` | `grid_final/cell_summary.csv`, `grid_final_C/cell_summary.csv` | Tables 3 to 12 printed to the console, `results_tables/` |
 | 8a | `source("make_figures_distributions.R")` | `pe_discriminant_analysis_profile_optimized_6.R`, `grid_final/calibration.csv` | `figures/` (PDF and PNG) |
 | 8b | `source("make_figures_AB.R")` | `grid_final/cell_summary.csv` | `figures/` |
 | 8c | `source("make_figures_C.R")` | `grid_final_C/cell_summary.csv` | `figures/` |
@@ -54,9 +55,10 @@ options(pe.dry_run = TRUE); source("run_gridC.R"); options(pe.dry_run = NULL)
 | `run_robust_B.R` | Robust comparators on the 72 cells of Block B |
 | `real_data_wdbc.R` | Wisconsin breast cancer data: three nested variable sets, 25, 50 and 100 patients per class, 500 stratified splits |
 | `real_data_wdbc_subsets.R` | Sensitivity analysis over all 28 pairs and 56 five-variable subsets of the eight measurements |
-| `analyze_todos.R` | Sensitivity analyses (boundary estimates accepted, failed replicates removed), shape-estimation accuracy, largest Monte Carlo standard errors |
+| `analyze_blocks_AB.R` | Sensitivity analyses (boundary estimates accepted, failed replicates removed), shape-estimation accuracy, largest Monte Carlo standard errors |
 | `analyze_robust.R`, `analyze_robust_B.R` | Tables of the robust-comparator study |
 | `analyze_fallback_cor.R` | Within-cell and cell-level correlations between shape-estimation error and the paired difference, with and without fallback replicates |
+| `make_results_tables.R` | Tables 3 to 12 of the Results (fallback rates, shape estimation, decision maps, cost of estimating the shape, Block C) from the cell summaries |
 | `make_calibration_tables.R` | Appendix tables of the calibrated location differences and realised Bayes errors |
 | `make_figures_*.R`, `redraw_fig15.R` | Figures of the paper (`redraw_fig15.R` redraws the variable-subset figure from the saved results of `real_data_wdbc_subsets.R`) |
 

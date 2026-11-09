@@ -1,10 +1,11 @@
+%%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 760, "nodeSpacing": 30, "rankSpacing": 40}, "themeVariables": {"fontSize": "16px"}}}%%
 flowchart TD
-  S1["<b>Step 1. Simulation, Blocks A and B</b> (288 cells, B = 1,000)<br/>run_grid3_restartable.R, using pe_discriminant_analysis_profile_optimized_5.R<br/>writes grid_final/"]
-  S2["<b>Step 2. Simulation, Block C</b> (144 cells, B = 1,000)<br/>run_gridC.R, using pe_discriminant_analysis_profile_optimized_6.R<br/>writes grid_final_C/"]
-  S3["<b>Step 3. Robust comparators, Blocks A and C</b> (72 + 144 cells)<br/>run_robust.R, using robust_comparators.R<br/>reads grid_final/ and grid_final_C/, writes robust_results/"]
-  S4["<b>Step 4. Robust comparators, Block B</b> (72 cells)<br/>run_robust_B.R<br/>reads grid_final/, writes robust_results_B/"]
-  S5["<b>Step 5. Real data, three variable sets</b> (500 splits)<br/>real_data_wdbc.R<br/>writes real_data_wdbc/"]
-  S6["<b>Step 6. Real data, all 28 pairs and 56 five-variable subsets</b> (100 splits)<br/>real_data_wdbc_subsets.R<br/>writes real_data_wdbc_subsets/"]
-  S7["<b>Step 7. Numbers and tables for the paper</b><br/>analyze_todos.R, analyze_robust.R, analyze_robust_B.R,<br/>analyze_fallback_cor.R, make_calibration_tables.R"]
-  S8["<b>Step 8. Figures</b><br/>make_figures_distributions.R, make_figures_AB.R, make_figures_C.R,<br/>make_figures_robust.R, redraw_fig15.R"]
+  S1["<b>Step 1. Simulation, Blocks A and B</b><br/>288 cells, B = 1,000.<br/>Run run_grid3_restartable.R, using pe_discriminant_analysis_profile_optimized_5.R.<br/>Writes grid_final/"]
+  S2["<b>Step 2. Simulation, Block C</b><br/>144 cells, B = 1,000.<br/>Run run_gridC.R, using pe_discriminant_analysis_profile_optimized_6.R.<br/>Writes grid_final_C/"]
+  S3["<b>Step 3. Robust comparators, Blocks A and C</b><br/>72 + 144 cells.<br/>Run run_robust.R, using robust_comparators.R.<br/>Reads grid_final/ and grid_final_C/. Writes robust_results/"]
+  S4["<b>Step 4. Robust comparators, Block B</b><br/>72 cells.<br/>Run run_robust_B.R.<br/>Reads grid_final/. Writes robust_results_B/"]
+  S5["<b>Step 5. Real data, three variable sets</b><br/>500 splits.<br/>Run real_data_wdbc.R.<br/>Writes real_data_wdbc/"]
+  S6["<b>Step 6. Real data, all variable subsets</b><br/>28 pairs and 56 five-variable subsets, 100 splits.<br/>Run real_data_wdbc_subsets.R.<br/>Writes real_data_wdbc_subsets/"]
+  S7["<b>Step 7. Numbers and tables for the paper</b><br/>Run analyze_blocks_AB.R, analyze_robust.R, analyze_robust_B.R,<br/>analyze_fallback_cor.R, make_calibration_tables.R<br/>and make_results_tables.R (Tables 3 to 12)."]
+  S8["<b>Step 8. Figures</b><br/>Run make_figures_distributions.R, make_figures_AB.R, make_figures_C.R,<br/>make_figures_robust.R and redraw_fig15.R."]
   S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
