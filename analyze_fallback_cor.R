@@ -1,8 +1,8 @@
 # ============================================================================
-# analyze_fallback_cor.R : reviewer point 2.4. Does the association between
-# shape-estimation error and the paired difference (estimated shape vs fixed
-# beta = 1, approach 1 minus approach 2) depend on the replicates in which the
-# estimated-shape fit was replaced by the normal-based fit (fallback)?
+# analyze_fallback_cor.R : Does the association between shape-estimation error 
+# and the paired difference (estimated shape vs fixed beta = 1, approach 1 minus
+# approach 2) depend on the replicates in which the estimated-shape fit was
+# replaced by the normal-based fit (fallback)?
 #
 # Reads the stored replicate files grid_final/cells/*B1000.rds (run from the
 # folder that contains grid_final/). Changes nothing. Paste everything printed.
