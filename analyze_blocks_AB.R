@@ -1,6 +1,5 @@
 # ============================================================================
-# analyze_blocks_AB.R : the numbers needed to close the remaining \todo{} items in
-# the Results of Blocks A and B. Reads grid_final/cell_summary.csv and the stored
+# analyze_blocks_AB.R : Reads grid_final/cell_summary.csv and the stored
 # replicate files grid_final/cells/*B1000.rds. Prints four parts; paste everything.
 #   1. sensitivity analyses: boundary estimates accepted; replicates with any
 #      failed fit excluded (compared with the primary fallback analysis)
