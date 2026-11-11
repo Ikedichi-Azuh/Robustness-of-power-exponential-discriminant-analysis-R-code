@@ -69,7 +69,7 @@ options(pe.dry_run = TRUE); source("run_gridC.R"); options(pe.dry_run = NULL)
 
 ## Requirements
 
-* R 4.5.3
+* R version 4.5.1 (2025-06-13)
 * Packages: `MASS`, `parallel` (both ship with R), `robustbase` (MCD), `dslabs` (breast cancer data), `ggplot2` (>= 3.4, for the figures).
 
 To record the session used for a run:
